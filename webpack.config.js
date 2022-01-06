@@ -101,7 +101,11 @@ module.exports = (env, argv) => {
     config.devServer = { ...DevServer };
   } else if (argv.mode === "production") {
     config.mode = "production";
-    config.output = { ...config.output, path: Path.resolve(__dirname, "docs") };
+    config.output = {
+      ...config.output,
+      path: Path.resolve(__dirname, "docs"),
+      publicPath: "/SingleFile2Trilium",
+    };
     config.optimization = {
       ...config.optimization,
       ...{
