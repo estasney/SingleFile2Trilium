@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { DefinePlugin } = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const Path = require("path");
 
 const DevServer = {
   port: 9000,
@@ -100,6 +101,7 @@ module.exports = (env, argv) => {
     config.devServer = { ...DevServer };
   } else if (argv.mode === "production") {
     config.mode = "production";
+    config.output = { ...config.output, path: Path.resolve(__dirname, "docs") };
     config.optimization = {
       ...config.optimization,
       ...{
