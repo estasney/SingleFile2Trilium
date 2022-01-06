@@ -1,0 +1,11 @@
+@import "field";
+.textfield {
+  @include field;
+}
+.textfield-label {
+  @include field-label;
+}
+
+.textfield-input {
+  @include field-input;
+}

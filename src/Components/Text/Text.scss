@@ -1,0 +1,19 @@
+.text {
+  font-size: 1rem;
+  &--sm {
+    @extend .text;
+    font-size: 0.5rem;
+  }
+  &--md {
+    @extend .text;
+    font-size: 0.75rem;
+  }
+  &--lg {
+    @extend .text;
+    font-size: 1.25rem;
+  }
+  &--xl {
+    @extend .text;
+    font-size: 1.5rem;
+  }
+}

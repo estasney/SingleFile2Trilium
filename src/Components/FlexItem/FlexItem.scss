@@ -1,0 +1,38 @@
+@use "sass:meta";
+
+@mixin grow-size($args...) {
+  @debug meta.keywords($args);
+
+  @each $name, $val in meta.keywords($args) {
+    .i-flex .grow-#{$name} {
+      flex-grow: $val;
+    }
+  }
+}
+@mixin shrink-size($args...) {
+  @debug meta.keywords($args);
+
+  @each $name, $val in meta.keywords($args) {
+    .i-flex .shrink-#{$name} {
+      flex-shrink: $val;
+    }
+  }
+}
+
+@include grow-size(
+  $one: 1,
+  $two: 2,
+  $three: 3,
+  $four: 4,
+  $five: 5,
+  $six: 6,
+)
+
+@include shrink-size(
+  $one: 1,
+  $two: 2,
+  $three: 3,
+  $four: 4,
+  $five: 5,
+  $six: 6,
+)

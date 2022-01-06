@@ -1,0 +1,52 @@
+@use "sass:color";
+
+.progress {
+    box-sizing: inherit;
+    display: inline-block;
+    animation: progress-rotate 1.4s linear infinite;
+    width: 40px;
+    height: 40px;
+    &--primary {
+        @extend .progress;
+        color: color.adjust(#007bff, $hue: 80deg)
+    }
+}
+
+svg.progress > circle {
+    stroke: currentColor;
+    stroke-dasharray: 80px, 200px;
+    stroke-dashoffset: 0;
+    stroke-width: 3.6px;
+    animation: circle-dash 1.4s ease-in-out infinite;
+
+}
+
+.progress-container {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+@keyframes progress-rotate {
+    0% {
+        transform-origin: 50% 50%;
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle-dash {
+    0% {
+        stroke-dasharray: 1px, 200px;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -15px;
+    }
+    100% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -125px;
+    }
+}

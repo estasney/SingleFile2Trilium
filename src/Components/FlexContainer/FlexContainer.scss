@@ -1,0 +1,75 @@
+@use "sass:meta";
+
+@mixin row_gap($selector, $row) {
+  &.#{$selector} {
+    row-gap: $row;
+  }
+}
+@mixin col_gap($selector, $col) {
+  &.#{$selector} {
+    column-gap: $col;
+  }
+}
+
+.p-flex {
+  display: flex;
+  width: 100%;
+  &.row {
+    flex-direction: row;
+  }
+  &.col {
+    flex-direction: column;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
+  &.row-wrap {
+    flex-flow: row wrap;
+  }
+  &.row-no-wrap {
+    flex-flow: row nowrap;
+  }
+  &.start {
+    justify-content: flex-start;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  &.evenly {
+    justify-content: space-evenly;
+  }
+  &.align-start {
+    align-items: flex-start;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-stretch {
+    align-items: stretch;
+  }
+  &.align-baseline {
+    align-items: baseline;
+  }
+  @include row_gap("r-xs", 0.5rem);
+  @include row_gap("r-sm", 0.75rem);
+  @include row_gap("r-md", 1rem);
+  @include row_gap("r-lg", 1.5rem);
+  @include row_gap("r-xl", 2rem);
+  @include col_gap("c-xs", 0.5rem);
+  @include col_gap("c-sm", 0.75rem);
+  @include col_gap("c-md", 1rem);
+  @include col_gap("c-lg", 1.5rem);
+  @include col_gap("c-xl", 2rem);
+}

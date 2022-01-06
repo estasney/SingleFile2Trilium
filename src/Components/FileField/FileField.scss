@@ -1,0 +1,13 @@
+@import "src/Components/TextField/field";
+
+.filefield {
+  @include field;
+}
+
+.filefield-label {
+  @include field-label;
+}
+
+.filefield-input {
+  @include field-input;
+}
