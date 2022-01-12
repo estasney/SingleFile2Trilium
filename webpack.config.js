@@ -1,10 +1,9 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { DefinePlugin } = require("webpack");
-const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const Path = require("path");
+const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 
 const DevServer = {
   port: 9000,
@@ -87,8 +86,9 @@ const BaseConfig = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "SingleFile2Trilium",
-      filename: "index.html",
       template: path.resolve(path.join(__dirname, "src", "index.html")),
+      inject: "body",
+      filename: "SingleFile2Trilium.html",
     }),
   ],
 };
@@ -101,6 +101,9 @@ module.exports = (env, argv) => {
     config.devServer = { ...DevServer };
   } else if (argv.mode === "production") {
     config.mode = "production";
+    config.plugins.push(
+      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/bundle.js/])
+    );
     config.output = {
       ...config.output,
       path: Path.resolve(__dirname, "docs"),
